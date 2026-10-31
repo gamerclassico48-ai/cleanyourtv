@@ -77,6 +77,7 @@
         android:theme="@style/Theme.TvHome"
         android:allowBackup="false"
         android:localeConfig="@xml/locales_config">
+           <activity android:name=".WallpaperActivity" android:exported="false" />
 
         <activity
             android:name=".MainActivity"
