@@ -124,7 +124,8 @@ public final class LauncherSettingsActivity extends Activity {
             reverseRow(clockChoices);
         }
         wallpaperChoice = findViewById(R.id.wallpaperChoice);
-        wallpaperChoice.setOnClickListener(v -> showWallpaperPicker());
+        wallpaperChoice.setOnClickListener(v ->
+                startActivity(new Intent(this, WallpaperActivity.class)));
         animationsChoice = findViewById(R.id.animationsChoice);
         animationsChoice.setOnClickListener(v -> {
             animations = !animations;
@@ -179,6 +180,12 @@ public final class LauncherSettingsActivity extends Activity {
         else columnChoices[Math.max(0, Math.min(columns - 4, 3))].requestFocus();
     }
 
+        @Override
+    protected void onResume() {
+        super.onResume();
+        if (wallpaperChoice != null) refresh();
+    }
+    
     private void reverseRow(TextView[] views) {
         LinearLayout row = (LinearLayout) views[0].getParent();
         row.removeAllViews();
